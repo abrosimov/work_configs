@@ -1,0 +1,6 @@
+Work/*
+badoo/*
+.ssh/*
+!.ssh/config
+.WebIde70/*
+*
