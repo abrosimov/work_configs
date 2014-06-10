@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <component name="TerminalOptionsProvider">
+    <option name="myReportMouse" value="false" />
+    <option name="mySoundBell" value="false" />
+  </component>
+</application>
+

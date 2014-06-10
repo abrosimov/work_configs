@@ -1,0 +1,3 @@
+#!/bin/bash
+setxkbmap -layout "en_US,ru(winkeys)"
+setxkbmap -option -option "grp:ctrl_shift_toggle,grp_led:scroll"

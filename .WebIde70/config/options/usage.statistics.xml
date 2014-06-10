@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <component name="UsagesStatistic" time="1401810487775" allowed="true" show-notification="false" period="weekly">
+    <group id="JavaScript versions" priority="0.0" data="DEFAULT=1" />
+    <group id="Look and Feel" priority="0.0" data="Linux - Darcula=1" />
+    <group id="UI Features" priority="0.0" data="Nav Bar visible=1,Recent Files (30  50]=1,Line Numbers=1,Tool Window buttons hidden=1,Tabs Left=1,Status bar visible=1,Toolbar hidden=1,Toolbar + NavBar=1" />
+    <group id="deployment server" priority="0.0" data="SFTP=1" />
+    <group id="file-type" priority="0.0" data="Smarty=1,Images=1,JavaScript=1,LESS=1,ARCHIVE=1,SmartyConfig=1,XML=1,JSON=1,Native=1,PATCH=1,HTML=1,DTD=1,PLAIN_TEXT=1,UNKNOWN=1,PHP=1,CSS=1,Ini=1,SQL=1,IDL=1,ReST=0" />
+    <group id="javaScript Scope Usages" priority="0.0" data="Project=2" />
+    <group id="module type" priority="0.0" data="WEB_MODULE=1" />
+    <group id="non-bundled-plugins" priority="0.0" data="com.intellij=1" />
+    <group id="php-debug-skipped-paths" priority="0.0" data="0=1" />
+    <group id="php-include-path" priority="0.0" data="0=0,1=1" />
+    <group id="php-interpreter-version" priority="0.0" data="not installed=1" />
+    <group id="php-interpreters" priority="0.0" data="0=1" />
+    <group id="php-servers" priority="0.0" data="0=1" />
+    <group id="productivity" priority="0.0" data="editing.completion.camelHumps=134,navigation.popup.class=347,navigation.popup.camelprefix=52,editing.completion.basic=4228,navigation.popup.symbol=26,editing.completion.finishByControlEnter=3721,navigation.popup.file=187,ui.tree.speedsearch=12,navigation.goto.declaration=1222,editing.select.word=602,refactoring.rename=47,editing.completion.replace=1,refactoring.introduceConstant=1,SearchEverywhere=3,ui.horizontal.scrolling=1,codeassists.quickjavadoc=1" />
+    <group id="user.os.name" priority="0.0" data="Linux=1" />
+    <group id="user.os.version" priority="0.0" data="Linux 3.13.0-24-generic=1" />
+    <group id="vcs" priority="0.0" data="Git=1" />
+  </component>
+</application>
+

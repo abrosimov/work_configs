@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<toolSet name="phpcf">
+  <tool name="format whole file" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="php" />
+      <option name="PARAMETERS" value="$USER_HOME$/Work/utils/phpcf apply $FilePath$" />
+      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
+    </exec>
+  </tool>
+  <tool name="format selection" showInMainMenu="true" showInEditor="true" showInProject="true" showInSearchPopup="true" disabled="false" useConsole="false" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="php" />
+      <option name="PARAMETERS" value="$USER_HOME$/Work/utils/phpcf apply $FilePath$:$SelectionStartLine$-$SelectionEndLine$" />
+      <option name="WORKING_DIRECTORY" value="$ProjectFileDir$" />
+    </exec>
+  </tool>
+</toolSet>
+

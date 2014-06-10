@@ -1,0 +1,11 @@
+[core]
+    mergeoptions = --no-edit
+[user]
+	email = k.abrosimov@corp.badoo.com
+	name = Abrosimov Kirill
+[apply]
+	whitespaces = nowarn
+[gc]
+    auto = 0
+[color]
+	ui = auto

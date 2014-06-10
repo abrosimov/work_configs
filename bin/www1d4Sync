@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <project>";
+    exit;
+fi;
+
+rsync -avz --delete $HOME/Work/$1/ kabrosimov@www1.d4:/home/kabrosimov/$1/
+
+echo "ln -s /home/kabrosimov/badoo/_templates/dev /home/kabrosimov/badoo/_templates/en-us; ln -s /home/kabrosimov/badoo/_templates/dev /home/kabrosimov/badoo/_templates/ru-ru; ln -s /home/kabrosimov/badoo/_templates/dev /home/kabrosimov/badoo/_templates/ru; ln -s /home/kabrosimov/badoo/_templates/dev /home/kabrosimov/badoo/_templates/en" | ssh kabrosimov@www1.d4
