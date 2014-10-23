@@ -64,7 +64,7 @@ alias add="git add"
 alias st="git status"
 alias stash="git stash"
 alias gdiff="git diff --color"
-alias gmm="git fetch -p origin master:master; git merge master"
+alias gmm="git fetch -pn origin master:master; git merge master"
 gg() { git grep -n "$*"; }
 
 alias man="LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 man"
