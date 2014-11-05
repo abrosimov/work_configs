@@ -69,7 +69,7 @@ tag_layouts = {
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tag_names = {'web', 'dev', 'sys', 'dev2', 'man', 'etc', 'im'}
+tag_names = {'web', 'prd', 'ide', 'dev', 'gui', 'etc', 'im'}
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -200,7 +200,7 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
     -- My bindings
-    awful.key(kb_m, "F12", function () awful.util.spawn("xscreensaver-command -lock") end),
+    awful.key(kb_m,  "F12", function () awful.util.spawn("xscreensaver-command -lock") end),
     awful.key(kb_ms, "b", function () awful.util.spawn(browser) end),
     awful.key(kb_ms, "f", function () awful.util.spawn(fm) end),
     awful.key(kb_ms, "g", function () awful.util.spawn(translate_cmd) end),
