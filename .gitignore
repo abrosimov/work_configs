@@ -2,5 +2,6 @@ Work/*
 badoo/*
 .ssh/*
 !.ssh/config
+!bin/*
 .WebIde70/*
 *
