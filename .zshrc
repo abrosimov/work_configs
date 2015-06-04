@@ -3,7 +3,7 @@ compinit
 
 # {{{ Устанавливаем необходимые переменные окружения.
 export PATH=$HOME/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin
-export MANPATH=/usr/local/man:/usr/man:/usr/lib/java/man:/usr/lib/java/man:/usr/share/texmf/man:/usr/local/share/man
+#export MANPATH=/usr/local/man:/usr/man:/usr/lib/java/man:/usr/lib/java/man:/usr/share/texmf/man:/usr/local/share/man
 export LD_PATH=/opt/qt4/lib:$LD_PATH
 
 export EDITOR='/usr/bin/vim'
