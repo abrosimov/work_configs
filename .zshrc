@@ -2,7 +2,7 @@ autoload -U compinit
 compinit
 
 # {{{ Устанавливаем необходимые переменные окружения.
-export PATH=$HOME/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin
+export PATH=$HOME/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/go/bin
 #export MANPATH=/usr/local/man:/usr/man:/usr/lib/java/man:/usr/lib/java/man:/usr/share/texmf/man:/usr/local/share/man
 export LD_PATH=/opt/qt4/lib:$LD_PATH
 
@@ -12,6 +12,7 @@ export PAGER=/usr/bin/less
 export BROWSER=/usr/bin/google-chrome
 export GREP_OPTIONS='--color=always -n'
 export GREP_COLOR='1;33'
+export GOPATH="$HOME/go"
 # }}}
 
 # {{{ Настраиваем логгирование вводимых команд и reverse-search.
@@ -65,6 +66,13 @@ alias st="git status"
 alias stash="git stash"
 alias gdiff="git diff --color"
 alias gmm="git fetch -pn origin master:master; git merge master"
+alias d3="ssh www1.d3"
+alias d4="ssh www1.d4"
+alias msh="ssh shell1.mlan"
+alias ush="ssh shell1.ulan"
+
+alias mlog="ssh logs1.mlan"
+alias ulog="ssh logs1.ulan"
 gg() { git grep -n "$*"; }
 
 alias man="LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 man"

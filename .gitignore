@@ -4,4 +4,3 @@ badoo/*
 .WebIde70/*
 *
 !.ssh/config
-!bin/*
