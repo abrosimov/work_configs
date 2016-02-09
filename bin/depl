@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if test "$#" -ne 2; then
+    echo "Usage: syncToProd path/to/file host.xlan"
+    exit 1
+fi
+
+
+BASE_NAME=$(basename $1)
+UPLOAD="upload/"
+
+ssh $2 "mkdir -p $UPLOAD" 
+if test "$?" -ne 0; then
+    notify-send -t 10000 -u critical "Deploy failed" "Failed to create upload dir on remote host"
+    exit 1;
+fi
+
+scp $1 "$2:./$UPLOAD/$BASE_NAME" >/dev/null
+if test "$?" -ne 0; then
+    notify-send -t 10000 -u critical "Deploy failed" "Failed to copy $1 to $2"
+    exit 1;
+fi
+
+ssh $2 "sudo -u deploy cp $UPLOAD/$BASE_NAME /local/www/$1"
+if test "$?" -ne 0; then
+    notify-send -t 10000 -u critical "Deploy failed" "Failed copy $1 from upload dir to /local/www"
+    exit 1;
+fi
+
+notify-send -t 10000 -u normal "Deploy complete" "File $1 was deployed to $2"
