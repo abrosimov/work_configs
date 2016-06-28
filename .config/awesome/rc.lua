@@ -1,16 +1,15 @@
 -- Standard awesome library
-require("awful")
+local gears = require("gears")
+local awful = require("awful")
+awful.rules = require("awful.rules")
 require("awful.autofocus")
-require("awful.rules")
 -- Theme handling library
-require("beautiful")
+local beautiful = require("beautiful")
 -- Notification library
-require("naughty")
-require("widgets")
-require("obvious.popup_run_prompt")
-require("obvious.battery")
+local naughty = require("naughty")
+local wibox = require("wibox")
+local menubar = require("menubar")
 
--- Load Debian menu entries
 require("debian.menu")
 
 -- {{{ Variable definitions
@@ -23,7 +22,7 @@ terminal_cmd = terminal .. ' -e '
 editor = "vim"
 editor_cmd = terminal_cmd .. editor
 php_ide = "/opt/phpstorm/bin/phpstorm.sh"
-browser = 'google-chrome'
+browser = 'google-chrome  --force-device-scale-factor=1.5'
 fm = 'pcmanfm'
 im = 'qutim'
 mail_client = terminal_cmd .. 'mutt'
@@ -92,8 +91,12 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   }
                         })
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
-                                     menu = mymainmenu })
+mylauncher = awful.widget.launcher(
+    {
+        image = beautiful.awesome_icon,
+        menu = mymainmenu
+    }
+)
 -- }}}
 
 -- Keyboard map indicator and changer
@@ -101,7 +104,7 @@ kbdcfg = {}
 kbdcfg.cmd = "setxkbmap"
 kbdcfg.layout = { "us", "ru" }
 kbdcfg.current = 1  -- us is our default layout
-kbdcfg.widget = widget({ type = "textbox", align = "right" })
+kbdcfg.widget = wibox.widget.textbox()
 kbdcfg.widget.text = " " .. kbdcfg.layout[kbdcfg.current] .. " "
 kbdcfg.switch = function ()
    kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
@@ -120,7 +123,7 @@ kbdcfg.widget:buttons(awful.util.table.join(
 mytextclock = awful.widget.textclock({ align = "right" })
 
 -- Create a systray
-mysystray = widget({ type = "systray" })
+mysystray = wibox.widget.systray()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -164,7 +167,7 @@ mytasklist.buttons = awful.util.table.join(
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
-    mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
+    mypromptbox[s] = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
@@ -174,37 +177,34 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
 
     -- Create a tasklist widget
-    mytasklist[s] = awful.widget.tasklist(function(c)
-                                              return awful.widget.tasklist.label.currenttags(c, s)
-                                          end, mytasklist.buttons)
+    mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.all)
 
     -- Create the wibox
     mywibox[s] = awful.wibox({ position = "top", screen = s, height = 17 })
     -- Add widgets to the wibox - order matters
-    mywibox[s].widgets = {
-        {
-            mytaglist[s],
-            mylauncher,
-            mypromptbox[s],
-            layout = awful.widget.layout.horizontal.leftright
-        },
-        mylayoutbox[s],
-        s == 1 and mysystray or nil,
-        mytasklist[s],
-        layout = awful.widget.layout.horizontal.rightleft
-    }
-    bottom_wibox[s] = awful.wibox({position = "bottom", screen = s, height = 16 })
-    bottom_wibox[s].widgets = {
-      cpuwidget,
-      separator,
-      memwidget,
-      separator,
-      datewidget,
-      layout = awful.widget.layout.horizontal.leftright,
-    }
+
+    -- Widgets that are aligned to the left
+    local left_layout = wibox.layout.fixed.horizontal()
+    left_layout:add(mylauncher)
+    left_layout:add(mytaglist[s])
+    left_layout:add(mypromptbox[s])
+
+    -- Widgets that are aligned to the right
+    local right_layout = wibox.layout.fixed.horizontal()
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mytextclock)
+    right_layout:add(mylayoutbox[s])
+
+    -- Now bring it all together (with the tasklist in the middle)
+    local layout = wibox.layout.align.horizontal()
+    layout:set_left(left_layout)
+    layout:set_middle(mytasklist[s])
+    layout:set_right(right_layout)
+
+    mywibox[s]:set_widget(layout)
 end
 -- }}}
 
@@ -229,7 +229,6 @@ globalkeys = awful.util.table.join(
     awful.key(kb_ms, "m", function () awful.util.spawn(mail_client) end),
     awful.key(kb_ms, "i", function () awful.util.spawn(im) end),
     awful.key(kb_ms, "p", function () awful.util.spawn(php_ide) end),
-    awful.key(kb_m, "r", obvious.popup_run_prompt.run_prompt),
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
@@ -409,3 +408,4 @@ os.execute("xxkb&")
 os.execute("setxkbmap us,ru -option 'grp:ctrl_shift_toggle,grp_led:scroll'")
 os.execute("setxkbmap -option caps:none")
 os.execute("xscreensaver -no-splash&")
+os.execute("wmname Sawfish")

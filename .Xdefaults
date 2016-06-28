@@ -4,14 +4,14 @@ Xft.antialias: true
 Xft.hintstyle: hintfull
 Xft.rgba: rgb
 
-Emacs.font: -*-terminus-medium-*-*-*-16-*-*-*-*-*-*-*
+Emacs.font: -*-terminus-medium-*-*-*-22-*-*-*-*-*-*-*
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ! URxvt settings
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 URxvt*foreground: white
-URxvt*path: /home/fally/.config/awesome/wallpapers
+URxvt*path: /home/kabrosimov/.config/awesome/wallpapers
 !URxvt*backgroundPixmap: seasons_cubbed.jpg;100x0+0+0:root
 URxvt*background: #222222
 

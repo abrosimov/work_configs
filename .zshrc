@@ -2,7 +2,7 @@ autoload -U compinit
 compinit
 
 # {{{ Устанавливаем необходимые переменные окружения.
-export PATH=$HOME/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/go/bin
+export PATH=$HOME/bin:$HOME/.config/composer/vendor/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/go/bin
 #export MANPATH=/usr/local/man:/usr/man:/usr/lib/java/man:/usr/lib/java/man:/usr/share/texmf/man:/usr/local/share/man
 export LD_PATH=/opt/qt4/lib:$LD_PATH
 
@@ -10,7 +10,6 @@ export EDITOR='/usr/bin/vim'
 export VISUAL=$EDITOR
 export PAGER=/usr/bin/less
 export BROWSER=/usr/bin/google-chrome
-export GREP_OPTIONS='--color=always -n'
 export GREP_COLOR='1;33'
 export GOPATH="$HOME/go"
 # }}}
@@ -53,6 +52,7 @@ alias -g NSC='notify-send -u critical -t 7000'
 alias -g NSN='notify-send -u normal'
 alias -g NSL='notify-send -u low'
 
+alias grep="grep --color=always -n "
 alias pull="git pull -p origin master"
 alias push="git push origin"
 alias co="git checkout"
