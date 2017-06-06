@@ -6,6 +6,6 @@
 [apply]
 	whitespaces = nowarn
 [gc]
-    auto = 0
+	auto = 0
 [color]
 	ui = auto

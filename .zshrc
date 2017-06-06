@@ -2,7 +2,10 @@ autoload -U compinit
 compinit
 
 # {{{ Устанавливаем необходимые переменные окружения.
-export PATH=$HOME/bin:$HOME/.config/composer/vendor/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/go/bin
+IDEA_PATH="/opt/idea/bin"
+CLION_PATH="/opt/clion/bin"
+PSTORM_PATH="/opt/phpstrom/bin"
+export PATH=$HOME/vendor/bin:$HOME/bin:$HOME/.config/composer/vendor/bin:/opt/phpstorm/bin:/opt/qt4/bin:$PATH:/sbin:/usr/sbin:/usr/local/sbin:/opt/go/bin:IDEA_PATH:CLION_PATH:PSTORM_PATH:/opt/mat
 #export MANPATH=/usr/local/man:/usr/man:/usr/lib/java/man:/usr/lib/java/man:/usr/share/texmf/man:/usr/local/share/man
 export LD_PATH=/opt/qt4/lib:$LD_PATH
 
@@ -48,9 +51,11 @@ alias -g P='| patch -p1'
 alias -g PD='| patch -p1 --dry-run'
 alias -g WC='| wc -l'
 # Алиасы для нотифаера
-alias -g NSC='notify-send -u critical -t 7000'
-alias -g NSN='notify-send -u normal'
-alias -g NSL='notify-send -u low'
+alias -g NSC='&& notify-send -u critical -t 7000'
+alias -g NSN='&& notify-send -u normal'
+alias -g NSL='&& notify-send -u low'
+
+alias -g UPL='NSC "Upload completed"'
 
 alias grep="grep --color=always -n "
 alias pull="git pull -p origin master"
@@ -59,20 +64,26 @@ alias co="git checkout"
 alias cob="git checkout -b"
 alias merge="git merge"
 alias fetch="git fetch origin master:master"
-alias branch="git branch"
+alias br="git branch"
 alias ci="git commit -m"
 alias add="git add"
 alias st="git status"
 alias stash="git stash"
-alias gdiff="git diff --color"
+alias gd="git diff --color"
+alias gdc="git diff --color --cached"
+alias am="git commit --amend"
 alias gmm="git fetch -pn origin master:master; git merge master"
 alias d3="ssh www1.d3"
 alias d4="ssh www1.d4"
 alias msh="ssh shell1.mlan"
 alias ush="ssh shell1.ulan"
 
-alias mlog="ssh logs1.mlan"
-alias ulog="ssh logs1.ulan"
+alias ml="ssh logs1.mlan"
+alias ul="ssh logs1.ulan"
+
+alias mi="ssh invite1.mlan"
+alias ui="ssh invite1.ulan"
+
 gg() { git grep -n "$*"; }
 
 alias man="LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 man"
@@ -369,3 +380,5 @@ RPS1='$(git_prompt_string) %{$fg[cyan]%}%D{%H:%M}%{$reset_color%}'
 if ! ssh-add -l > /dev/null; then
     ssh-add #$HOME/.ssh/id_rsa > /dev/null 2>&1
 fi
+
+_JAVA_AWT_WM_NONREPARENTING=1; export _JAVA_AWT_WM_NONREPARENTING

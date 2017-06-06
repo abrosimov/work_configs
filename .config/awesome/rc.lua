@@ -22,7 +22,7 @@ terminal_cmd = terminal .. ' -e '
 editor = "vim"
 editor_cmd = terminal_cmd .. editor
 php_ide = "/opt/phpstorm/bin/phpstorm.sh"
-browser = 'google-chrome  --force-device-scale-factor=1.5'
+browser = 'google-chrome --force-device-scale-factor=1.5'
 fm = 'pcmanfm'
 im = 'qutim'
 mail_client = terminal_cmd .. 'mutt'
