@@ -73,16 +73,6 @@ alias gd="git diff --color"
 alias gdc="git diff --color --cached"
 alias am="git commit --amend"
 alias gmm="git fetch -pn origin master:master; git merge master"
-alias d3="ssh www1.d3"
-alias d4="ssh www1.d4"
-alias msh="ssh shell1.mlan"
-alias ush="ssh shell1.ulan"
-
-alias ml="ssh logs1.mlan"
-alias ul="ssh logs1.ulan"
-
-alias mi="ssh invite1.mlan"
-alias ui="ssh invite1.ulan"
 
 gg() { git grep -n "$*"; }
 
